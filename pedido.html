@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido - Açougue do Chorão</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #a00000;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .navegacao {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .btn-voltar {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #a00000;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .btn-voltar:hover {
+      background-color: #800000;
+    }
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h2 {
+      color: #a00000;
+      margin-bottom: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .btn-whatsapp {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Faça seu Pedido</h1>
+    <p>Preencha os dados abaixo e envie direto pelo WhatsApp</p>
+  </header>
+
+  <div class="navegacao">
+    <a href="produtos.html" class="btn-voltar">⬅️ Voltar para Produtos</a>
+    <a href="index.html" class="btn-voltar">🏠 Página Inicial</a>
+  </div>
+
+  <main>
+    <form onsubmit="enviarFormulario(event)">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" required>
+
+      <h2>🛒 Produtos</h2>
+      <label for="comum">Linguiça Comum (kg):</label>
+      <input type="number" id="comum" min="0" step="0.5">
+
+      <label for="mista">Linguiça Mista (kg):</label>
+      <input type="number" id="mista" min="0" step="0.5">
+
+      <label for="apimentada">Linguiça Apimentada (kg):</label>
+      <input type="number" id="apimentada" min="0" step="0.5">
+
+      <label for="rojao">Rojão (unidades):</label>
+      <input type="number" id="rojao" min="0" step="1">
+
+      <label for="data">Data de entrega desejada:</label>
+      <input type="date" id="data" required>
+
+      <label for="endereco">Endereço de entrega:</label>
+      <input type="text" id="endereco" required>
+
+      <label for="pagamento">Forma de pagamento:</label>
+      <select id="pagamento" required>
+        <option value="">Selecione</option>
+        <option value="Pix">Pix</option>
+        <option value="Dinheiro">Dinheiro</option>
+        <option value="Cartão">Cartão</option>
+      </select>
+
+      <label for="mensagem">Observações:</label>
+      <textarea id="mensagem" rows="4" placeholder="Ex: Sem pimenta, entregar até as 10h" required></textarea>
+
+      <button type="submit" class="btn-whatsapp">Enviar Pedido</button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 Açougue do Chorão — Capão Bonito/SP
+  </footer>
+
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const telefone = document.getElementById('telefone').value;
+      const comum = document.getElementById('comum').value;
+      const mista = document.getElementById('mista').value;
+      const apimentada = document.getElementById('apimentada').value;
+      const rojao = document.getElementById('rojao').value;
+      const data = document.getElementById('data').value;
+      const endereco = document.getElementById('endereco').value;
+      const pagamento = document.getElementById('pagamento').value;
+      const mensagem = document.getElementById('mensagem').value;
+
+      let produtos = '';
+      if (comum > 0) produtos += `Linguiça Comum: ${comum}kg\n`;
+      if (mista > 0) produtos += `Linguiça Mista: ${mista}kg\n`;
+      if (apimentada > 0) produtos += `Linguiça Apimentada: ${apimentada}kg\n`;
+      if (rojao > 0) produtos += `Rojão: ${rojao} unidades\n`;
+
+      const texto = `Olá, meu nome é ${nome}.\nQuero fazer um pedido com os seguintes itens:\n${produtos}\nEmbalagem: ${embalagem}\nData de entrega: ${data}\nEndereço: ${endereco}\nForma de pagamento: ${pagamento}\nTelefone: ${telefone}\nObservações: ${mensagem}`;
+
+      const url = `https://wa.me/5514996444771?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+
+      alert("✅ Pedido enviado com sucesso!");
+    }
+  </script>
+
+</body>
+</html>
