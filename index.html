@@ -2,51 +2,104 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Açougue do Chorao</title>
+  <title>Açougue do Chorão</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
       background-color: #fff8f0;
       color: #333;
     }
+
     header {
       background-color: #a00000;
       color: white;
-      padding: 40px;
+      padding: 30px;
       text-align: center;
     }
-    header h1 {
-      font-size: 48px;
-      margin: 0;
+
+    .imagem-destaque {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
-    header p {
-      font-size: 18px;
-      margin-top: 10px;
+
+    .imagem-destaque img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
     }
+
+    .frase {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
     main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
       text-align: center;
-      padding: 40px 20px;
     }
-    .btn {
+
+    .btn-navegacao {
       display: inline-block;
-      margin: 20px 10px;
-      padding: 15px 30px;
-      background-color: #d32f2f;
+      margin: 10px;
+      padding: 14px 24px;
+      background-color: #a00000;
       color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 6px;
+      font-weight: bold;
       font-size: 16px;
     }
-    .btn:hover {
-      background-color: #b71c1c;
+
+    .btn-navegacao:hover {
+      background-color: #800000;
     }
+
+    .descricao {
+      margin-top: 30px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
     footer {
       background-color: #eee;
       text-align: center;
       padding: 20px;
       font-size: 14px;
       color: #666;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .frase {
+        font-size: 16px;
+        padding: 10px 15px;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .btn-navegacao {
+        width: 90%;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 10px;
+      }
     }
   </style>
 </head>
@@ -54,19 +107,28 @@
 
   <header>
     <h1>Açougue do Chorão</h1>
-    <p>Sabor que vem da brasa. Linguiças artesanais como você nunca viu.</p>
+    <p>Capão Bonito/SP — Tradição e sabor artesanal</p>
   </header>
 
+  <div class="imagem-destaque">
+    <img src="imagens/linguica-artesanal.jpg" alt="Linguiças artesanais na brasa">
+    <div class="frase">Sabor que vem da brasa — direto pra sua mesa!</div>
+  </div>
+
   <main>
-    <img src="linguicas.jpg" alt="Linguiças artesanais" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
-    <div>
-      <a href="produtos.html" class="btn">Conheça nossos produtos</a>
-      <a href="pedido.html" class="btn">Faça seu pedido</a>
+    <a href="produtos.html" class="btn-navegacao">🛒 Ver Produtos</a>
+    <a href="pedido.html" class="btn-navegacao">📦 Fazer Pedido</a>
+    <a href="contato.html" class="btn-navegacao">📞 Fale Conosco</a>
+
+    <div class="descricao">
+      <p>Somos especialistas em linguiças artesanais e rojões recheados, preparados com ingredientes selecionados e aquele toque caseiro que só quem ama churrasco conhece.</p>
+      <p>Atendemos Capão Bonito e região com entrega rápida e atendimento direto pelo WhatsApp. Faça seu pedido e experimente o verdadeiro sabor da brasa!</p>
     </div>
   </main>
 
   <footer>
-    © 2025 Açougue do Chorão — Capão Bonito/SP
+    © 2025 Açougue do Chorão — Rua das Linguiças, 123 — Capão Bonito/SP<br>
+    WhatsApp: (15) 99819-1541 | Atendimento: Carlos e Juliana
   </footer>
 
 </body>
