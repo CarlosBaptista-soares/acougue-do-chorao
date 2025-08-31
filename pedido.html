@@ -82,7 +82,37 @@
       font-size: 14px;
       color: #666;
     }
-    
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px;
+        font-size: 16px;
+      }
+      .navegacao {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-voltar {
+        width: 90%;
+        margin: 8px 0;
+        font-size: 16px;
+      }
+      main {
+        padding: 10px;
+      }
+      form {
+        padding: 15px;
+      }
+      input, select, textarea {
+        font-size: 16px;
+      }
+      .btn-whatsapp {
+        width: 100%;
+        font-size: 18px;
+        padding: 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -164,12 +194,16 @@
       if (apimentada > 0) produtos += `Linguiça Apimentada: ${apimentada}kg\n`;
       if (rojao > 0) produtos += `Rojão: ${rojao} unidades\n`;
 
-      const texto = `Olá, meu nome é ${nome}.\nQuero fazer um pedido com os seguintes itens:\n${produtos}\nEmbalagem: ${embalagem}\nData de entrega: ${data}\nEndereço: ${endereco}\nForma de pagamento: ${pagamento}\nTelefone: ${telefone}\nObservações: ${mensagem}`;
+      const texto = `Olá, meu nome é ${nome}.\nQuero fazer um pedido com os seguintes itens:\n${produtos}\nData de entrega: ${data}\nEndereço: ${endereco}\nForma de pagamento: ${pagamento}\nTelefone: ${telefone}\nObservações: ${mensagem}`;
 
       const url = `https://wa.me/5514996444771?text=${encodeURIComponent(texto)}`;
       window.open(url, '_blank');
 
       alert("✅ Pedido enviado com sucesso!");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
     }
   </script>
 
